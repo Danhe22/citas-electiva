@@ -7,7 +7,13 @@ function obtenerCitas(event) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data.data[0]);
+      // console.log(data.data[0]);
+
+      // traemos la data le paciente desde el objeto global
+      const dataPaciente= window.app
+      let nombre_paciente;
+      // console.log(dataPaciente)
+
       // Obtenemos la referencia al cuerpo de la tabla
       const tbody = document.querySelector('tbody');
 
@@ -16,12 +22,23 @@ function obtenerCitas(event) {
 
       // Iteramos por los datos y creamos una fila por cada cita
       data.data.forEach(cita => {
+
+        dataPaciente.forEach(paciente => {
+          if (cita.Paciente_Identificacion==paciente.Identificacion) {
+            nombre_paciente = `${paciente.Nombre} ${paciente.Apellido}`
+          }
+          // console.log(paciente.Nombre)
+        });
+
+        const atendida = cita.Atendida === 1 ? "Atendida" : "Pendiente";
         tablaHTML += `
           <tr>
             <td>${cita.Fecha}</td>
             <td>${cita.Hora}</td>
             <td>${cita.Paciente_Identificacion}</td>
+            <td>${nombre_paciente}</td>
             <td>${cita.Valor}</td>
+            <td>${atendida}</td>
           </tr>
         `;
       });

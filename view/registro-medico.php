@@ -40,6 +40,7 @@
 
             <input type="submit" value="Registrar" onclick="agregarMedico(event)">
         </form>
+        <div id="mensaje"></div>
     </div>
     <script src="../controller/medico.js"></script>
 </body>

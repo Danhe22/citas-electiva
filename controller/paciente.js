@@ -1,10 +1,15 @@
 // Función para obtener todos los pacientes de la base de datos
-function obtenerPacientes() {
-    fetch('obtener_pacientes.php')
+function obtenerPacientes(event) {
+
+    event.preventDefault();
+
+    fetch('http://localhost/citas-electiva/Model/paciente_model.php')
       .then(response => response.json())
       .then(data => {
         // Aquí puedes manipular los datos obtenidos y actualizar la vista
-        console.log(data);
+        // console.log(data.data);
+        let dataPaciente = data.data;
+        window.app = dataPaciente;
       })
       .catch(error => {
         console.error('Error al obtener pacientes:', error);
@@ -40,6 +45,15 @@ function obtenerPacientes() {
       .then(data => {
         // Aquí puedes manipular los datos obtenidos y actualizar la vista
         console.log(data);
+        document.getElementById("registro-paciente").reset();
+        const mensaje = document.getElementById('mensaje');
+              mensaje.textContent = data.message; // Agregar el mensaje devuelto por la petición
+              mensaje.classList.add('mostrar');
+
+
+              setTimeout(() => {
+                mensaje.classList.remove('mostrar'); // Remover la clase 'mostrar' para que se oculte
+              }, 3000);
       })
       .catch(error => {
         console.error('Error al agregar paciente:', error);

@@ -84,7 +84,7 @@
 	</style>
   </head>
 
-  <body>
+  <body onload="obtenerPacientes(event)">
     <h1>Tabla de citas del médico</h1>
 
     <div class="input-container">
@@ -101,7 +101,9 @@
           <th>Fecha de la cita</th>
           <th>Hora de la cita</th>
           <th>Identificacion del paciente</th>
+          <th>Nombre del paciente</th>
           <th>Valor de la consulta</th>
+		  <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -110,4 +112,5 @@
     </table>
   </body>
   <script src="../controller/citas.js"></script>
+  <script src="../controller/paciente.js"></script>
 </html>

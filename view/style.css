@@ -89,3 +89,33 @@ body {
     background-color: #333;
     color: #fff;
   }
+
+  #mensaje {
+    background-color: #4CAF50; /* Color de fondo */
+    border-radius: 10px;
+    color: white; /* Color del texto */
+    padding: 1rem; /* Espacio alrededor del contenido */
+    position: fixed; /* Posición fija */
+    bottom: 2rem; /* Distancia desde la parte inferior */
+    left: 50%; /* Posicionado horizontalmente en el centro */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    z-index: 9999; /* Colocar en la parte superior de otros elementos */
+    display: none; /* Ocultar inicialmente */
+  }
+  
+  #mensaje.mostrar {
+    display: block; /* Mostrar cuando la clase 'mostrar' está presente */
+    animation: fadeOut 3s ease-in-out; /* Animación de desvanecimiento */
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

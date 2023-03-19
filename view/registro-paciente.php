@@ -30,6 +30,9 @@
     
             <input type="submit" value="Registrar" onclick="agregarPaciente(event)">
         </form>
+        
+        <div id="mensaje"></div>
+
     </div>
 
     <script src="../controller/paciente.js"></script>

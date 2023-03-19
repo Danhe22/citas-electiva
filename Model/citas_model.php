@@ -128,10 +128,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($inserted) {
     http_response_code(201);
-    echo json_encode(array('message' => 'Cita insertada correctamente.'));
+    echo json_encode(array('message' => 'Cita agendada correctamente.'));
   } else {
     http_response_code(400);
-    echo json_encode(array('message' => 'Error al insertar la cita.'));
+    echo json_encode(array('message' => 'Error al agendar la cita.'));
   }
 }
 

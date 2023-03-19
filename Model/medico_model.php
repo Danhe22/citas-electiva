@@ -121,9 +121,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $result = $medicoModel->insertarMedico($identificacion, $nombre, $apellido, $especialidad);
   
     if ($result) {
-      $response = array('status' => 'success', 'message' => 'Médico creado exitosamente.');
+      $response = array('status' => 'success', 'message' => 'Médico registrado exitosamente.');
     } else {
-      $response = array('status' => 'error', 'message' => 'No se pudo crear el médico.');
+      $response = array('status' => 'error', 'message' => 'No se pudo registrar el médico.');
     }
   
     header('Content-Type: application/json');

@@ -9,10 +9,10 @@ function obtenerMedicos() {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
       console.log(data.status)
       if (data.status == "error") {
-        const select      = document.getElementById('medico');
-        const btn_cita    = document.getElementById('btn-agregar-cita');
-        select.innerHTML  = '<option value="">No hay medicos disponibles</option>';
-        select.disabled   = true;
+        const select = document.getElementById('medico');
+        const btn_cita = document.getElementById('btn-agregar-cita');
+        select.innerHTML = '<option value="">No hay medicos disponibles</option>';
+        select.disabled = true;
         btn_cita.style.background = "gray";
         btn_cita.style.cursor = "not-allowed";
         btn_cita.disabled = true;
@@ -60,16 +60,16 @@ function agregarMedico(event) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data);
+      // console.log(data);
+      const mensaje = document.getElementById('mensaje');
       document.getElementById("formulario-medico").reset();
-        const mensaje = document.getElementById('mensaje');
-              mensaje.textContent = data.message; // Agregar el mensaje devuelto por la petición
-              mensaje.classList.add('mostrar');
+      mensaje.textContent = data.message; // Agregar el mensaje devuelto por la petición
+      mensaje.classList.add('mostrar');
 
 
-              setTimeout(() => {
-                mensaje.classList.remove('mostrar'); // Remover la clase 'mostrar' para que se oculte
-              }, 3000);
+      setTimeout(() => {
+        mensaje.classList.remove('mostrar'); // Remover la clase 'mostrar' para que se oculte
+      }, 3000);
     })
     .catch(error => {
       console.error('Error al agregar médico:', error);

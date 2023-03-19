@@ -114,9 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pacienteModel = new PacienteModel();
     $result = $pacienteModel->insertarPaciente($data['identificacion'], $data['nombre'], $data['apellido'], $data['activo'], $data['regimen']);
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Paciente insertado correctamente.');
+        $response = array('status' => 'success', 'message' => 'Paciente registrado correctamente.');
     } else {
-        $response = array('status' => 'error', 'message' => 'Error al insertar el paciente.');
+        $response = array('status' => 'error', 'message' => 'Error al registrar el paciente.');
     }
 
     header('Content-Type: application/json');

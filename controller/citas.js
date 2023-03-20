@@ -7,7 +7,7 @@ function obtenerCitas(event) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data);
+      // console.log(data);
 
       if (data && data.data && data.data.length > 0) {
         // traemos la data le paciente desde el objeto global
@@ -26,7 +26,8 @@ function obtenerCitas(event) {
 
           dataPaciente.forEach(paciente => {
             if (cita.Paciente_Identificacion == paciente.Identificacion) {
-              nombre_paciente = `${paciente.Nombre} ${paciente.Apellido}`
+              nombre_paciente = `${paciente.Nombre} ${paciente.Apellido}`;
+              // nombre_paciente = `${paciente.regimen}`
             }
             // console.log(paciente.Nombre)
           });
@@ -68,9 +69,19 @@ function agregarCita(event) {
   const hora = document.getElementById("hora").value;
   const paciente_id = document.getElementById("paciente").value;
   const medico_identificacion = document.getElementById("medico").value;
-  const atendida = false
+  const atendida = false;
 
-
+  const dataPaciente = window.app;
+  let regimen;
+  
+  dataPaciente.forEach(paciente => {
+    
+    if (paciente_id == paciente.Identificacion) {
+      regimen = `${paciente.regimen}`
+      // console.log(regimen)
+      
+    }
+  });
 
 
 
@@ -84,7 +95,8 @@ function agregarCita(event) {
       hora,
       atendida,
       paciente_id,
-      medico_identificacion
+      medico_identificacion,
+      regimen
     })
   })
     .then(response => response.json())

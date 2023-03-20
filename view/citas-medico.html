@@ -104,49 +104,15 @@
 
 	</style>
   </head>
-
-  <!-- <body onload="obtenerPacientes(event)">
-	<a href="./index.html" class="navigation-button">Inicio</a>
-    <h1>Tabla de citas del médico</h1>
-
-    <div class="input-container">
-      <form>
-        <label for="medico_identificacion">Identificación del médico:</label>
-        <input type="text" id="medico_identificacion" name="medico_identificacion" required>
-        <input class="btn" type="submit" value="Buscar" onclick="obtenerCitas(event)">
-      </form>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha de la cita</th>
-          <th>Hora de la cita</th>
-          <th>Identificacion del paciente</th>
-          <th>Nombre del paciente</th>
-          <th>Valor de la consulta</th>
-		  <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <-- Aquí se mostrarán las citas del médico -->
-      <!-- </tbody>
-    </table>
-	<div id="mensaje"></div>
-  </body>
-  <script src="../controller/citas.js"></script>
-  <script src="../controller/paciente.js"></script>
-</html> -->
-
 <body onload="obtenerPacientes(event)">
     <a href="./index.html" class="navigation-button">Inicio</a>
     <h1>Tabla de citas del médico</h1>
 
     <div class="input-container">
-      <form>
+      <form id="form">
         <label for="medico_identificacion">Identificación del médico:</label>
         <input type="text" id="medico_identificacion" name="medico_identificacion" required>
-        <input class="btn" type="submit" value="Buscar" onclick="obtenerCitas(event)">
+        <input class="btn" id="buscar" type="submit" value="Buscar" onclick="obtenerCitas(event)">
       </form>
     </div>
 
@@ -159,7 +125,7 @@
           <th>Nombre del paciente</th>
           <th>Valor de la consulta</th>
           <th>Estado</th>
-		  <th class="botones-columna">UP</th> <!-- Agregar una columna vacía para los botones -->
+		  <th class="botones-columna"></th> <!-- Agregar una columna vacía para los botones -->
         </tr>
         <tr>
 			<th></th>

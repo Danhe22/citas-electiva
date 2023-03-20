@@ -7,9 +7,9 @@ function obtenerCitas(event) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data.data);
+      console.log(data);
 
-      if (data.data > 0) {
+      if (data && data.data && data.data.length > 0) {
         // traemos la data le paciente desde el objeto global
         const dataPaciente = window.app
         let nombre_paciente;

@@ -33,13 +33,17 @@ function obtenerCitas(event) {
 
           const atendida = cita.Atendida === 1 ? "Atendida" : "Pendiente";
           tablaHTML += `
-            <tr>
+            <tr class="botones-fila">
               <td>${cita.Fecha}</td>
               <td>${cita.Hora}</td>
               <td>${cita.Paciente_Identificacion}</td>
               <td>${nombre_paciente}</td>
               <td>${cita.Valor}</td>
               <td>${atendida}</td>
+              <td class="botones-celda">
+                <button class="boton-eliminar">Eliminar</button>
+                <button class="boton-actualizar">Actualizar</button>
+              </td>
             </tr>
           `;
         });
@@ -69,9 +73,6 @@ function agregarCita(event) {
   const paciente_id = document.getElementById("paciente").value;
   const medico_identificacion = document.getElementById("medico").value;
   const atendida = false
-
-
-
 
 
   fetch('http://localhost/citas-electiva/Model/citas_model.php', {

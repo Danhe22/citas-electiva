@@ -8,7 +8,6 @@
 		body {
 			font-family: Arial, sans-serif;
 			background-color: #f2f2f2;
-			margin: 10px 50px;
 		}
 
 		.container {
@@ -83,29 +82,10 @@
             max-width: 25%;
         }
 
-		.boton-eliminar {
-		  background-color: #dc3545;
-		  color: white;
-		  border: none;
-		  padding: 0.5rem 1rem;
-		  border-radius: 0.25rem;
-		  cursor: pointer;
-		}
-
-		.boton-actualizar {		
-  			background-color: #007bff;
-  			color: white;
-  			border: none;
-  			padding: 0.5rem 1rem;
-  			border-radius: 0.25rem;
-  			cursor: pointer;
-		}
-
-
 	</style>
   </head>
 
-  <!-- <body onload="obtenerPacientes(event)">
+  <body onload="obtenerPacientes(event)">
 	<a href="./index.html" class="navigation-button">Inicio</a>
     <h1>Tabla de citas del médico</h1>
 
@@ -129,53 +109,10 @@
         </tr>
       </thead>
       <tbody>
-        <-- Aquí se mostrarán las citas del médico -->
-      <!-- </tbody>
+        <!-- Aquí se mostrarán las citas del médico -->
+      </tbody>
     </table>
 	<div id="mensaje"></div>
-  </body>
-  <script src="../controller/citas.js"></script>
-  <script src="../controller/paciente.js"></script>
-</html> -->
-
-<body onload="obtenerPacientes(event)">
-    <a href="./index.html" class="navigation-button">Inicio</a>
-    <h1>Tabla de citas del médico</h1>
-
-    <div class="input-container">
-      <form>
-        <label for="medico_identificacion">Identificación del médico:</label>
-        <input type="text" id="medico_identificacion" name="medico_identificacion" required>
-        <input class="btn" type="submit" value="Buscar" onclick="obtenerCitas(event)">
-      </form>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha de la cita</th>
-          <th>Hora de la cita</th>
-          <th>Identificacion del paciente</th>
-          <th>Nombre del paciente</th>
-          <th>Valor de la consulta</th>
-          <th>Estado</th>
-		  <th class="botones-columna">UP</th> <!-- Agregar una columna vacía para los botones -->
-        </tr>
-        <tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-	  	</tr>
-          
-      </thead>
-		<tbody>
-			<!-- Aquí se mostrarán las citas del médico -->
-		</tbody>
-    </table>
-    <div id="mensaje"></div>
   </body>
   <script src="../controller/citas.js"></script>
   <script src="../controller/paciente.js"></script>

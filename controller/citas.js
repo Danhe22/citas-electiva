@@ -7,9 +7,9 @@ function obtenerCitas(event) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data.data);
+      console.log(data);
 
-      if (data.data > 0) {
+      if (data && data.data && data.data.length > 0) {
         // traemos la data le paciente desde el objeto global
         const dataPaciente = window.app
         let nombre_paciente;
@@ -33,17 +33,13 @@ function obtenerCitas(event) {
 
           const atendida = cita.Atendida === 1 ? "Atendida" : "Pendiente";
           tablaHTML += `
-            <tr class="botones-fila">
+            <tr>
               <td>${cita.Fecha}</td>
               <td>${cita.Hora}</td>
               <td>${cita.Paciente_Identificacion}</td>
               <td>${nombre_paciente}</td>
               <td>${cita.Valor}</td>
               <td>${atendida}</td>
-              <td class="botones-celda">
-                <button class="boton-eliminar">Eliminar</button>
-                <button class="boton-actualizar">Actualizar</button>
-              </td>
             </tr>
           `;
         });
@@ -73,6 +69,9 @@ function agregarCita(event) {
   const paciente_id = document.getElementById("paciente").value;
   const medico_identificacion = document.getElementById("medico").value;
   const atendida = false
+
+
+
 
 
   fetch('http://localhost/citas-electiva/Model/citas_model.php', {

@@ -37,20 +37,6 @@ class CitasModel {
     }
   }
 
-  public function obtenerCitasId($id) {
-    if (!is_numeric($id)) {
-      return false;
-    }
-    $query = "SELECT * FROM Cita WHERE id = '$id'";
-    $result = $this->db->query($query);
-    if ($result->num_rows > 0) {
-      $row = $result->fetch_assoc();
-      return $row;
-    } else {
-      return false;
-    }
-}
-
 
   public function obtenerCitas() {
     $query = "SELECT * FROM Cita";
@@ -114,33 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
   }
 
-  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Debe pasarse en el link el id de la cita http://localhost/citas-electiva/Model/citas_model.php?idCitas=1
-    if(isset($_GET['id'])){
-      $idCitas = $_GET['id'];
-      $citasModel = new CitasModel();
-      $citas = $citasModel->obtenerCitasId($idCitas);
-      if ($citas) {
-        $response = array('status' => 'success', 'data' => $citas);
-      } else {
-        $response = array('status' => 'error', 'message' => "No se encontró ninguna cita con el ID $idCitas.");
-      }
-    }
-   else {
-      $citasModel = new CitasModel();
-      $citas = $citasModel->obtenerCitas();
-      if ($citas) {
-        $response = array('status' => 'success', 'data' => $citas);
-      } else {
-        $response = array('status' => 'error', 'message' => 'No se encontraron citas.');
-      }
-    }
-  }
-  
-
-  header('Content-Type: application/json');
-  echo json_encode($response);
-}
 
 // Verificar si se ha enviado una petición POST para insertar una nueva cita
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

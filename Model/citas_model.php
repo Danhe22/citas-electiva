@@ -66,8 +66,8 @@ class CitasModel {
     }
   }
 
-  public function actualizarCita($id, $fecha, $hora, $valor, $atendida, $paciente_id, $medico_identificacion) {
-    $query = "UPDATE Cita SET Fecha = '$fecha', Hora = '$hora', Valor = '$valor', Atendida = '$atendida', Paciente_Identificacion = '$paciente_id', Medico_Identificacion = '$medico_identificacion' WHERE Fecha = '$id'";
+  public function actualizarEstadoCita($id, $atendida) {
+    $query = "UPDATE cita SET Atendida = '$atendida' WHERE id = '$id'";
     $result = $this->db->query($query);
     if ($result) {
       return true;
@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
   $citasModel = new CitasModel();
 
-  $updated = $citasModel->actualizarCita($data['id'], $data['fecha'], $data['hora'], $data['valor'], $data['atendida'], $data['paciente_id'], $data['medico_identificacion']);
+  $updated = $citasModel->actualizarEstadoCita($data['id'], $data['atendida']);
 
   if ($updated) {
     header('Content-Type: application/json');

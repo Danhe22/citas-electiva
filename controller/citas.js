@@ -52,6 +52,12 @@ function obtenerCitas(event) {
         const mensaje = document.getElementById('mensaje');
         mensaje.textContent = "No tiene citas asignadas"; // Agregar el mensaje devuelto por la petición
         mensaje.classList.add('mostrar');
+        const tbody = document.querySelector('tbody');
+        tbody.innerHTML = "Sin citas asignadas";
+
+        setTimeout(() => {
+          mensaje.classList.remove('mostrar'); // Remover la clase 'mostrar' para que se oculte
+        }, 3000);
       }
 
     })

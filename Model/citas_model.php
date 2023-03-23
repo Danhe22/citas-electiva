@@ -100,6 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
   }
 
+  header('Content-Type: application/json');
+  echo json_encode($response);
+}
+
 
 // Verificar si se ha enviado una petición POST para insertar una nueva cita
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,13 +1,24 @@
 // Función para obtener todas las citas de la base de datos
-function obtenerCitas(event) {
+function obtenerCitas(event, id_medico) {
   event.preventDefault();
+
+
+  if(id_medico){
+    medico_identificacion = id_medico;
+  }else{
   medico_identificacion = document.getElementById("medico_identificacion").value;
+
+  window.medico = medico_identificacion
+
+  }
+
+  // console.log(medico_identificacion);
 
   fetch(`http://localhost/citas-electiva/Model/citas_model.php?medico_identificacion=${medico_identificacion}`)
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(event);
+      // console.log(event);
 
       if (data && data.data && data.data.length > 0) {
         // traemos la data le paciente desde el objeto global
@@ -33,12 +44,12 @@ function obtenerCitas(event) {
 
           document.getElementById("form").reset();
 
-          console.log(cita.Atendida);
-          let atendida = cita.Atendida === 0 ? "Atendida" : "Pendiente";
+          // console.log(cita.Atendida);
+          let atendida = cita.Atendida == 0 ? "Atendida" : "Pendiente";
           
           // console.log(cita.id);
           // console.log(cita.Paciente_Identificacion);
-          console.log(atendida);
+          // console.log(atendida);
 
 
           tablaHTML += `
@@ -134,13 +145,13 @@ function actualizarCitas(event, id, atendida) {
 
   if (atendida === 0) {
     atendida = 1
-  } else {
+  } else if(atendida === 1) {
     atendida = 0
   }
 
 
   // Realizar la petición de actualización
-  fetch(`http://localhost/citas-electiva/Model/citas_model.php?id=${id}`, {
+  fetch(`http://localhost/citas-electiva/Model/citas_model.php`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -153,20 +164,23 @@ function actualizarCitas(event, id, atendida) {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data);
+      // console.log(data);
       // Actualizar el valor de atendida en la tabla HTML
-      // obtenerCitas(event); // Llamamos a la función obtenerCitas para actualizar la vista
-      const fila = document.querySelector(`tr[data-id="${id}"]`);
-      const atendidaHTML = fila.querySelector('#atendida');
-      atendidaHTML.textContent = atendida === 0 ? 'Pendiente' : 'Atendida';
-      const mensaje = document.getElementById("mensaje");
-      if (mensaje) {
-        mensaje.textContent = data.message;
-        mensaje.classList.add('mostrar');
-        setTimeout(() => {
-          mensaje.classList.remove('mostrar');
-        }, 5000);
-      }
+      obtenerCitas(event, window.medico); // Llamamos a la función obtenerCitas para actualizar la vista
+      // const fila = document.querySelector(`tr[data-id="${id}"]`);
+      // const atendidaHTML = fila.querySelector('#atendida');
+      // atendidaHTML.textContent = atendida === 0 ? 'Pendiente' : 'Atendida';
+      
+      
+      
+      // const mensaje = document.getElementById("mensaje");
+      // if (mensaje) {
+      //   mensaje.textContent = data.message;
+      //   mensaje.classList.add('mostrar');
+      //   setTimeout(() => {
+      //     mensaje.classList.remove('mostrar');
+      //   }, 5000);
+      // }
 
     })
     .catch(error => {

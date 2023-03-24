@@ -5,6 +5,7 @@ function obtenerCitas(event, id_medico) {
 
   if(id_medico){
     medico_identificacion = id_medico;
+
   }else{
   medico_identificacion = document.getElementById("medico_identificacion").value;
 
@@ -37,7 +38,8 @@ function obtenerCitas(event, id_medico) {
 
           dataPaciente.forEach(paciente => {
             if (cita.Paciente_Identificacion == paciente.Identificacion) {
-              nombre_paciente = `${paciente.Nombre} ${paciente.Apellido}`
+              nombre_paciente = `${paciente.Nombre} ${paciente.Apellido}`;
+              // nombre_paciente = `${paciente.regimen}`
             }
             // console.log(paciente.Identificacion)
           });
@@ -74,13 +76,15 @@ function obtenerCitas(event, id_medico) {
         tbody.innerHTML = tablaHTML;
 
       } else {
+       
         const mensaje = document.getElementById('mensaje');
         mensaje.textContent = "No tiene citas asignadas"; // Agregar el mensaje devuelto por la petición
         mensaje.classList.add('mostrar');
+        const tbody = document.querySelector('tbody');
+        tbody.innerHTML = "Sin citas asignadas";
 
         setTimeout(() => {
-          // mensaje.textContent = "No tiene citas asignadas"; // Agregar el mensaje devuelto por la petición
-          mensaje.classList.remove('mostrar');
+          mensaje.classList.remove('mostrar'); // Remover la clase 'mostrar' para que se oculte
         }, 3000);
       }
 
@@ -100,7 +104,20 @@ function agregarCita(event) {
   const hora = document.getElementById("hora").value;
   const paciente_id = document.getElementById("paciente").value;
   const medico_identificacion = document.getElementById("medico").value;
-  const atendida = false
+  const atendida = false;
+
+  const dataPaciente = window.app;
+  let regimen;
+  
+  dataPaciente.forEach(paciente => {
+    
+    if (paciente_id == paciente.Identificacion) {
+      regimen = `${paciente.regimen}`
+      // console.log(regimen)
+      
+    }
+  });
+
 
 
   fetch('http://localhost/citas-electiva/Model/citas_model.php', {
@@ -113,7 +130,8 @@ function agregarCita(event) {
       hora,
       atendida,
       paciente_id,
-      medico_identificacion
+      medico_identificacion,
+      regimen
     })
   })
     .then(response => response.json())
@@ -167,20 +185,17 @@ function actualizarCitas(event, id, atendida) {
       // console.log(data);
       // Actualizar el valor de atendida en la tabla HTML
       obtenerCitas(event, window.medico); // Llamamos a la función obtenerCitas para actualizar la vista
-      // const fila = document.querySelector(`tr[data-id="${id}"]`);
-      // const atendidaHTML = fila.querySelector('#atendida');
-      // atendidaHTML.textContent = atendida === 0 ? 'Pendiente' : 'Atendida';
+     
       
       
-      
-      // const mensaje = document.getElementById("mensaje");
-      // if (mensaje) {
-      //   mensaje.textContent = data.message;
-      //   mensaje.classList.add('mostrar');
-      //   setTimeout(() => {
-      //     mensaje.classList.remove('mostrar');
-      //   }, 5000);
-      // }
+      const mensaje = document.getElementById("mensaje");
+      if (mensaje) {
+        mensaje.textContent = data.message;
+        mensaje.classList.add('mostrar');
+        setTimeout(() => {
+          mensaje.classList.remove('mostrar');
+        }, 5000);
+      }
 
     })
     .catch(error => {
@@ -191,7 +206,7 @@ function actualizarCitas(event, id, atendida) {
 // Función para eliminar una cita de la base de datos
 function eliminarCita(event, id) {
   event.preventDefault();
-  fetch(`http://localhost/citas-electiva/Model/citas_model.php?id=${id}`, {
+  fetch(`http://localhost/citas-electiva/Model/citas_model.php`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -203,7 +218,9 @@ function eliminarCita(event, id) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      obtenerCitas(event); // Llamamos a la función obtenerCitas para actualizar la vista
+      
+      obtenerCitas(event, window.medico); // Llamamos a la función obtenerCitas para actualizar la vista
+      
       const mensaje = document.getElementById('mensaje');
       mensaje.textContent = data.mensaje;
       mensaje.classList.add('mostrar');

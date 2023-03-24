@@ -113,9 +113,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data['valor'] = 0; // Asignar un valor predeterminado de 0
   }
 
+  // Verificar si existe la clave 'regimen' en $data
+  if (isset($data['regimen'])) {
+    // Asignar un valor predeterminado de 0 si el regimen es subsidiado, de lo contrario 4500
+    $valor = ($data['regimen'] == 'subsidiado') ? 0 : 4500;
+  } else {
+    $valor = $data['valor'];
+  }
+
   $citasModel = new CitasModel();
 
-  $inserted = $citasModel->insertarCita($data['fecha'], $data['hora'], $data['valor'], $data['atendida'], $data['paciente_id'], $data['medico_identificacion']);
+  $inserted = $citasModel->insertarCita($data['fecha'], $data['hora'], $valor, $data['atendida'], $data['paciente_id'], $data['medico_identificacion']);
 
   if ($inserted) {
     http_response_code(201);
@@ -125,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(array('message' => 'Error al agendar la cita.'));
   }
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $data = json_decode(file_get_contents('php://input'), true);

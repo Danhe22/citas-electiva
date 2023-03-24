@@ -7,23 +7,9 @@ function obtenerPacientes(event) {
       .then(response => response.json())
       .then(data => {
         // Aquí puedes manipular los datos obtenidos y actualizar la vista
-        // console.log(data.status);
-        
-      if ( data.status == "error" ) {
-        let btnDisabledEliminar   = document.getElementById('btn-eliminar');
-        let btnDisabledActualizar = document.getElementById('btn-actualizar');
-        btnDisabledEliminar.style.background = "gray";
-        btnDisabledEliminar.style.cursor = "not-allowed";
-        btnDisabledEliminar.disabled = true;
-        btnDisabledActualizar.style.background = "gray";
-        btnDisabledActualizar.style.cursor = "not-allowed";
-        btnDisabledActualizar.disabled = true;
-
-      }
-
+        // console.log(data.data);
         let dataPaciente = data.data;
         window.app = dataPaciente;
-        // console.log(dataPaciente)
       })
       .catch(error => {
         console.error('Error al obtener pacientes:', error);

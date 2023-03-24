@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Tabla de citas del médico</title>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Tabla de citas del médico</title>
 	<link rel="stylesheet" href="style.css">
-    <style>
+	<style>
 		body {
 			font-family: Arial, sans-serif;
 			background-color: #f2f2f2;
-			margin: 10px 50px;
 		}
 
 		.container {
@@ -52,7 +52,8 @@
 			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 		}
 
-		th, td {
+		th,
+		td {
 			padding: 10px;
 			text-align: left;
 			border-bottom: 1px solid #ddd;
@@ -78,63 +79,63 @@
 			background-color: #555;
 		}
 
-        .input-container{
-            margin-bottom: 50px;
-            max-width: 25%;
-        }
+		.input-container {
+			margin-bottom: 50px;
+			max-width: 25%;
+		}
 
 		.boton-eliminar {
-		  background-color: #dc3545;
-		  color: white;
-		  border: none;
-		  padding: 0.5rem 1rem;
-		  border-radius: 0.25rem;
-		  cursor: pointer;
+			background-color: #dc3545;
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			border-radius: 0.25rem;
+			cursor: pointer;
 		}
 
-		.boton-actualizar {		
-  			background-color: #007bff;
-  			color: white;
-  			border: none;
-  			padding: 0.5rem 1rem;
-  			border-radius: 0.25rem;
-  			cursor: pointer;
+		.boton-actualizar {
+			background-color: #007bff;
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			border-radius: 0.25rem;
+			cursor: pointer;
 		}
-
-
 	</style>
-  </head>
+</head>
+
 <body onload="obtenerPacientes(event)">
-    <a href="./index.html" class="navigation-button">Inicio</a>
-    <h1>Tabla de citas del médico</h1>
+	<a href="./index.html" class="navigation-button">Inicio</a>
+	<h1>Tabla de citas del médico</h1>
 
-    <div class="input-container">
-      <form id="form">
-        <label for="medico_identificacion">Identificación del médico:</label>
-        <input type="text" id="medico_identificacion" name="medico_identificacion" required>
-        <input class="btn" id="buscar" type="submit" value="Buscar" onclick="obtenerCitas(event)">
-      </form>
-    </div>
+	<div class="input-container">
+		<form id="form">
+			<label for="medico_identificacion">Identificación del médico:</label>
+			<input type="text" id="medico_identificacion" name="medico_identificacion" required>
+			<input class="btn" id="buscar" type="submit" value="Buscar" onclick="obtenerCitas(event)">
+		</form>
+	</div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha de la cita</th>
-          <th>Hora de la cita</th>
-          <th>Identificacion del paciente</th>
-          <th>Nombre del paciente</th>
-          <th>Valor de la consulta</th>
-          <th>Estado</th>
-		  <th class="botones-columna"></th> <!-- Agregar una columna vacía para los botones -->
-        </tr>
-          
-      </thead>
+	<table>
+		<thead>
+			<tr>
+				<th>Fecha de la cita</th>
+				<th>Hora de la cita</th>
+				<th>Identificacion del paciente</th>
+				<th>Nombre del paciente</th>
+				<th>Valor de la consulta</th>
+				<th>Estado</th>
+				<th class="botones-columna"></th> <!-- Agregar una columna vacía para los botones -->
+			</tr>
+
+		</thead>
 		<tbody>
 			<!-- Aquí se mostrarán las citas del médico -->
 		</tbody>
-    </table>
-    <div id="mensaje"></div>
-  </body>
-  <script src="../controller/citas.js"></script>
-  <script src="../controller/paciente.js"></script>
+	</table>
+	<div id="mensaje"></div>
+</body>
+<script src="../controller/citas.js"></script>
+<script src="../controller/paciente.js"></script>
+
 </html>

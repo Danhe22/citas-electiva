@@ -1,141 +1,140 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Estilos del formulario */
-  .formulario {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  .formulario h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .formulario label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .formulario input[type="text"],
-  .formulario input[type="date"],
-  .formulario input[type="time"],
-  .formulario input[type="email"],
-  .formulario input[type="number"],
-  .formulario select,
-  .formulario textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #fff;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  .formulario select option:first-child {
-    display: none;
-  }
-  
-  .formulario textarea {
-    height: 100px;
-  }
-  
-  .formulario input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  /* .formulario input[type="submit"]:hover {
-    background-color: #0069d9;
-  } */
-  
+  font-family: Arial, sans-serif;
+}
 
-  .container-index {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .link-index {
-    margin: 0 20px;
-    padding: 10px 20px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: #333;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .link-index:hover {
-    background-color: #333;
-    color: #fff;
-  }
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-  #mensaje {
-    background-color: #4CAF50; /* Color de fondo */
-    border-radius: 10px;
-    color: white; /* Color del texto */
-    padding: 1rem; /* Espacio alrededor del contenido */
-    position: fixed; /* Posición fija */
-    bottom: 2rem; /* Distancia desde la parte inferior */
-    left: 50%; /* Posicionado horizontalmente en el centro */
-    transform: translateX(-50%); /* Centrar horizontalmente */
-    z-index: 9999; /* Colocar en la parte superior de otros elementos */
-    display: none; /* Ocultar inicialmente */
-  }
-  
-  #mensaje.mostrar {
-    display: block; /* Mostrar cuando la clase 'mostrar' está presente */
-    animation: fadeOut 3s ease-in-out; /* Animación de desvanecimiento */
-  }
-  
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
+/* Estilos del formulario */
+.formulario {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
 
-  .navigation-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
+.formulario h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.formulario input[type="text"],
+.formulario input[type="date"],
+.formulario input[type="time"],
+.formulario input[type="email"],
+.formulario input[type="number"],
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.formulario select option:first-child {
+  display: none;
+}
+
+.formulario textarea {
+  height: 100px;
+}
+
+.formulario input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* .formulario input[type="submit"]:hover {
+  background-color: #0069d9;
+} */
+
+
+.container-index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.link-index {
+  margin: 0 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.link-index:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+#mensaje {
+  background-color: #4CAF50; /* Color de fondo */
+  border-radius: 10px;
+  color: white; /* Color del texto */
+  padding: 1rem; /* Espacio alrededor del contenido */
+  position: fixed; /* Posición fija */
+  bottom: 2rem; /* Distancia desde la parte inferior */
+  left: 50%; /* Posicionado horizontalmente en el centro */
+  transform: translateX(-50%); /* Centrar horizontalmente */
+  z-index: 9999; /* Colocar en la parte superior de otros elementos */
+  display: none; /* Ocultar inicialmente */
+}
+
+#mensaje.mostrar {
+  display: block; /* Mostrar cuando la clase 'mostrar' está presente */
+  animation: fadeOut 3s ease-in-out; /* Animación de desvanecimiento */
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
-  
-  .navigation-button:hover {
-    background-color: #0069d9;
+  90% {
+    opacity: 1;
   }
-  
-  .navigation-button:active {
-    background-color: #005cbf;
+  100% {
+    opacity: 0;
   }
-  
+}
+
+.navigation-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+.navigation-button:hover {
+  background-color: #0069d9;
+}
+
+.navigation-button:active {
+  background-color: #005cbf;
+}

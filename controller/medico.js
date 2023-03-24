@@ -7,7 +7,7 @@ function obtenerMedicos() {
     .then(response => response.json())
     .then(data => {
       // Aquí puedes manipular los datos obtenidos y actualizar la vista
-      console.log(data.status)
+      // console.log(data.status)
       if (data.status == "error") {
         const select = document.getElementById('medico');
         const btn_cita = document.getElementById('btn-agregar-cita');

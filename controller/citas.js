@@ -47,7 +47,7 @@ function obtenerCitas(event, id_medico) {
           document.getElementById("form").reset();
 
           // console.log(cita.Atendida);
-          let atendida = cita.Atendida == 0 ? "Atendida" : "Pendiente";
+          let atendida = cita.Atendida == 1 ? "Atendida" : "Pendiente";
           
           // console.log(cita.id);
           // console.log(cita.Paciente_Identificacion);
